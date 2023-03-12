@@ -30,35 +30,35 @@ const list = [
 
   const first = list[0];
 
-function App() {
-
-  return (
+const App = () =>  (
     <div>
       <Search/>
 <hr />
-<List />
+<List  />
 <hr />
 <Author />
     </div>
   );
-}
 
-function Items(){
+const Items = ({name}) =>{
   return (
     <ul>
     {list.map(function(item){
       return (<li key={item.objectID}>
         <span>{item.num_comments} comments</span>
         <br />
+        <span>Hi {name}</span>
         <span>{item.points} points</span>
+        <br />
       </li>
       )
+      
     })}
     </ul>
   )
 }
 
-function Search(){
+const Search = () => {
   return (
     <div>
       <h1>My Hacker Stories</h1>
@@ -68,18 +68,20 @@ function Search(){
   )
 }
 
-function List(){
+const List = () =>{
   return (
   <div>
-    <Items />
+    <Items name="Arbnor" />
+    <Test />
+    <br />
   </div>
   )
 }
 
-function Author(){
+const Author = () => {
   return (
     <ul>
-      {list.map(function(item){
+      {list.map((item) =>{
         return (
           <li key={item.objectID}>
             <span>{item.author}</span>
@@ -89,5 +91,14 @@ function Author(){
     </ul>
   )
 }
+
+const Test = () => {
+  return React.createElement(
+    'p',
+    {className: 'danger'},
+  'Hello React'
+  );
+}
+
 
 export default App
